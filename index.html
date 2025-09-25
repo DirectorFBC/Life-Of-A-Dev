@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Meme Coin Jester</title>
+    <style>
+        :root {
+            --jester-purple: #8B5FBF;
+            --jester-green: #4CAF50;
+            --jester-red: #F44336;
+            --jester-yellow: #FFEB3B;
+            --parchment: #F2ECE4;
+            --dark-text: #000000; /* Changed to black */
+            --accent-color: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+            color: var(--dark-text); /* All text black by default */
+        }
+
+        body {
+            background-color: var(--parchment);
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%232C1810" stroke-width="1"/></svg>');
+        }
+
+        header {
+            background: var(--parchment); /* Changed to parchment color */
+            color: var(--dark-text);
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 3px solid var(--dark-text); /* Black border */
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cabin Sketch', cursive;
+        }
+
+        header::before {
+            content: "🤡";
+            font-size: 10rem;
+            position: absolute;
+            opacity: 0.1;
+            top: -30px;
+            left: -30px;
+            transform: rotate(-15deg);
+            color: var(--dark-text); /* Black color for emoji */
+        }
+
+        header::after {
+            content: "💎";
+            font-size: 8rem;
+            position: absolute;
+            opacity: 0.1;
+            bottom: -30px;
+            right: -30px;
+            transform: rotate(15deg);
+            color: var(--dark-text); /* Black color for emoji */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Cabin Sketch', cursive;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-family: 'Cabin Sketch', cursive;
+            color: var(--dark-text);
+        }
+
+        .throw-coins-btn {
+            background: var(--parchment);
+            color: var(--dark-text);
+            border: 2px solid var(--dark-text); /* Black border */
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+            font-family: 'Cabin Sketch', cursive;
+        }
+
+        .throw-coins-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            background: #e8e0d5;
+        }
+
+        .throw-coins-btn.coins-thrown {
+            background: #e8e0d5;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            background: var(--parchment);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--dark-text); /* Black border */
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-card {
+            background: var(--parchment);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid var(--dark-text); /* Black border */
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            font-family: 'Cabin Sketch', cursive;
+            border-bottom: 2px solid var(--dark-text); /* Black border */
+            color: var(--dark-text);
+        }
+
+        .jester-header {
+            background-color: var(--parchment);
+        }
+
+        .dev-header {
+            background-color: var(--parchment);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .card-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--dark-text);
+        }
+
+        .jester-content li::before {
+            content: "🎭";
+            position: absolute;
+            left: 0;
+            color: var(--dark-text); /* Black color for emoji */
+        }
+
+        .dev-content li::before {
+            content: "💻";
+            position: absolute;
+            left: 0;
+            color: var(--dark-text); /* Black color for emoji */
+        }
+
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--dark-text); /* Black line */
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: var(--parchment);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            width: 90%;
+            position: relative;
+            border: 2px solid var(--dark-text); /* Black border */
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid var(--dark-text); /* Black arrow */
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            right: auto;
+            left: -10px;
+            border-left: none;
+            border-right: 10px solid var(--dark-text); /* Black arrow */
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-family: 'Cabin Sketch', cursive;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            background: var(--parchment);
+            border: 3px solid var(--dark-text); /* Black border */
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .interactive-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--parchment);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--dark-text); /* Black border */
+        }
+
+        .jester-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .jester-option {
+            padding: 1rem 2rem;
+            background: var(--parchment);
+            color: var(--dark-text);
+            border: 2px solid var(--dark-text); /* Black border */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Cabin Sketch', cursive;
+        }
+
+        .jester-option:hover {
+            background: #e8e0d5;
+            transform: scale(1.05);
+        }
+
+        .jester-display {
+            margin-top: 2rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .jester-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--dark-text);
+        }
+
+        .jester-image {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text); /* Black color for emoji */
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--parchment);
+            color: var(--dark-text);
+            margin-top: 3rem;
+            font-family: 'Cabin Sketch', cursive;
+            border-top: 3px solid var(--dark-text); /* Black border */
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start;
+                padding-right: 0;
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 70px;
+            }
+            
+            .timeline-content::after {
+                right: auto;
+                left: -10px;
+                border-left: none;
+                border-right: 10px solid var(--dark-text); /* Black arrow */
+            }
+            
+            .timeline-marker {
+                left: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .jester-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .jester-option {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Life Of A Dev: The Modern Day Jester</h1>
+        <p class="subtitle">How modern crypto developers mirror medieval court fools</p>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <p>In the grand courts of nobility, jesters entertained lords and kings for coins and temporary favor. Today, in the digital kingdoms of cryptocurrency, meme coin developers perform a strikingly similar role - creating amusement for crypto "whales" in exchange for fleeting fortunes.</p>
+            <p>This website explores the uncanny parallels between these two seemingly disparate professions separated by centuries.</p>
+        </section>
+        
+        <section class="comparison-grid">
+            <div class="comparison-card">
+                <div class="card-header jester-header">The Medieval Jester</div>
+                <div class="card-content jester-content">
+                    <ul>
+                        <li>Entertained nobility with wit and performance</li>
+                        <li>Depended on the favor of their patrons</li>
+                        <li>Used humor to speak truths others couldn't</li>
+                        <li>Lived a precarious existence at court</li>
+                        <li>Their value was in entertainment, not substance</li>
+                        <li>Could be dismissed when no longer amusing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="comparison-card">
+                <div class="card-header dev-header">The Meme Coin Developer</div>
+                <div class="card-content dev-content">
+                    <ul>
+                        <li>Entertains crypto investors with viral concepts</li>
+                        <li>Depends on the favor of crypto "whales"</li>
+                        <li>Uses memes to comment on financial systems</li>
+                        <li>Exists in the volatile world of cryptocurrency</li>
+                        <li>Their value is in hype, not utility</li>
+                        <li>Can be abandoned when the next trend emerges</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="timeline">
+            <h2 style="text-align: center; margin-bottom: 2rem;">The Parallel Journey</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>The Performance Begins</h3>
+                    <p><strong>Jester:</strong> Arrives at court with a repertoire of jokes and tricks</p>
+                    <p><strong>Dev:</strong> Launches token with a clever meme and social media buzz</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Seeking Patronage</h3>
+                    <p><strong>Jester:</strong> Must impress the nobility to earn their place</p>
+                    <p><strong>Dev:</strong> Needs to attract crypto influencers and whales</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>The Peak of Fame</h3>
+                    <p><strong>Jester:</strong> Becomes the favorite entertainer of the court</p>
+                    <p><strong>Dev:</strong> Token price moons, gains massive social media following</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>The Inevitable Decline</h3>
+                    <p><strong>Jester:</strong> Jokes grow stale, new entertainers arrive</p>
+                    <p><strong>Dev:</strong> Hype fades, investors move to the next trend</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>The Aftermath</h3>
+                    <p><strong>Jester:</strong> Leaves court with whatever coins they've accumulated</p>
+                    <p><strong>Dev:</strong> Abandons project after cashing out, moves to next idea</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interactive-section">
+            <h2>Meet the Jester-Devs</h2>
+            <p>Click on a jester type to see their modern crypto counterpart</p>
+            
+            <div class="jester-selector">
+                <button class="jester-option" data-type="fool">The Court Fool</button>
+                <button class="jester-option" data-type="jongleur">The Jongleur</button>
+                <button class="jester-option" data-type="buffoon">The Buffoon</button>
+                <button class="jester-option" data-type="zany">The Zany</button>
+            </div>
+            
+            <div class="jester-display">
+                <div class="jester-image">🤡</div>
+                <p class="jester-quote">Select a jester type to see their modern equivalent</p>
+                <p class="jester-description"></p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <button id="buyCoinBtn" class="throw-coins-btn">Throw coins at this jester</button>
+        <p>The Modern Day Jester - A comparison of two eras of entertainers</p>
+        <p>© 2023 - All jesters and devs welcome</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const jesterOptions = document.querySelectorAll('.jester-option');
+            const jesterImage = document.querySelector('.jester-image');
+            const jesterQuote = document.querySelector('.jester-quote');
+            const jesterDescription = document.querySelector('.jester-description');
+            const buyCoinBtn = document.getElementById('buyCoinBtn');
+            
+            const jesterData = {
+                fool: {
+                    emoji: "🃏",
+                    quote: "I speak truths through laughter",
+                    description: "The Court Fool used wit to critique nobility without punishment. Their modern equivalent is the meme coin dev who creates tokens that parody serious financial systems while making pointed commentary about crypto culture."
+                },
+                jongleur: {
+                    emoji: "🎪",
+                    quote: "My act travels from court to court",
+                    description: "Jongleurs were traveling entertainers who performed wherever they could find an audience. Similarly, some devs create multiple meme coins, hopping from trend to trend wherever they can attract investors."
+                },
+                buffoon: {
+                    emoji: "😂",
+                    quote: "Laughter is my only currency",
+                    description: "Buffoons relied on physical comedy and absurdity. Their crypto counterparts create the most outrageous meme coins with absurd premises that gain popularity precisely because of their ridiculousness."
+                },
+                zany: {
+                    emoji: "🎭",
+                    quote: "I mimic the powerful for your amusement",
+                    description: "Zanies specialized in imitation and mockery of the upper class. Modern equivalents create parody tokens that mimic serious projects or make fun of prominent figures in the crypto space."
+                }
+            };
+            
+            jesterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    const data = jesterData[type];
+                    
+                    jesterImage.textContent = data.emoji;
+                    jesterQuote.textContent = data.quote;
+                    jesterDescription.textContent = data.description;
+                });
+            });
+            
+            buyCoinBtn.addEventListener('click', function() {
+                // Create a fun animation for throwing coins
+                const btn = this;
+                const originalText = btn.textContent;
+                btn.textContent = "💰 Coins thrown! 💰";
+                btn.classList.add('coins-thrown');
+                
+                // Create coin animation
+                for (let i = 0; i < 10; i++) {
+                    createFlyingCoin(btn);
+                }
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('coins-thrown');
+                }, 2000);
+            });
+            
+            function createFlyingCoin(button) {
+                const coin = document.createElement('div');
+                coin.innerHTML = '🪙';
+                coin.style.position = 'fixed';
+                coin.style.fontSize = '24px';
+                coin.style.zIndex = '1000';
+                coin.style.pointerEvents = 'none';
+                coin.style.color = '#000000'; // Black coins
+                
+                // Position at the button
+                const rect = button.getBoundingClientRect();
+                const startX = rect.left + rect.width / 2;
+                const startY = rect.top + rect.height / 2;
+                
+                coin.style.left = startX + 'px';
+                coin.style.top = startY + 'px';
+                
+                document.body.appendChild(coin);
+                
+                // Random direction and distance
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 100 + Math.random() * 150;
+                const endX = startX + Math.cos(angle) * distance;
+                const endY = startY + Math.sin(angle) * distance;
+                
+                // Animate
+                const duration = 800 + Math.random() * 700;
+                
+                coin.animate([
+                    { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${endX - startX}px, ${endY - startY}px) rotate(360deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+                });
+                
+                // Remove coin after animation
+                setTimeout(() => {
+                    document.body.removeChild(coin);
+                }, duration);
+            }
+        });
+    </script>
+</body>
+</html>
