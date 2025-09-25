@@ -13,7 +13,7 @@
             --jester-green: #4CAF50;
             --jester-red: #F44336;
             --jester-yellow: #FFEB3B;
-            --parchment: #f2ece400;
+            --parchment: #f2ece417; 
             --dark-text: #000000; 
             --accent-color: #D4AF37;
         }
@@ -33,14 +33,23 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Hidden audio element */
+        #backgroundAudio {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
         }
 
         header {
-            background: var(--parchment); /* Changed to parchment color */
+            background: var(--parchment); 
             color: var(--dark-text);
             text-align: center;
             padding: 2rem 1rem;
-            border-bottom: 3px solid var(--dark-text); /* Black border */
+            border-bottom: 3px solid var(--dark-text);
             position: relative;
             overflow: hidden;
             font-family: 'Cabin Sketch', cursive;
@@ -54,7 +63,7 @@
             top: -30px;
             left: -30px;
             transform: rotate(-15deg);
-            color: var(--dark-text); /* Black color for emoji */
+            color: var(--dark-text);
         }
 
         header::after {
@@ -65,12 +74,13 @@
             bottom: -30px;
             right: -30px;
             transform: rotate(15deg);
-            color: var(--dark-text); /* Black color for emoji */
+            color: var(--dark-text);
         }
 
         .logo {
             height: 500px;
             width: auto;
+            max-width: 90%;
         }
 
         h1 {
@@ -91,12 +101,14 @@
             color: var(--dark-text);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.315);
+            padding: 10px;
+            background-color: var(--parchment);
         }
 
         .throw-coins-btn {
             background: var(--parchment);
             color: var(--dark-text);
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
             padding: 1rem 2rem;
             font-size: 1.2rem;
             font-weight: bold;
@@ -133,7 +145,7 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
         }
 
         .comparison-grid {
@@ -149,7 +161,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
         }
 
         .comparison-card:hover {
@@ -162,7 +174,7 @@
             font-weight: bold;
             font-size: 1.2rem;
             font-family: 'Cabin Sketch', cursive;
-            border-bottom: 2px solid var(--dark-text); /* Black border */
+            border-bottom: 2px solid var(--dark-text);
             color: var(--dark-text);
         }
 
@@ -195,14 +207,14 @@
             content: "🎭";
             position: absolute;
             left: 0;
-            color: var(--dark-text); /* Black color for emoji */
+            color: var(--dark-text);
         }
 
         .dev-content li::before {
             content: "💻";
             position: absolute;
             left: 0;
-            color: var(--dark-text); /* Black color for emoji */
+            color: var(--dark-text);
         }
 
         .timeline {
@@ -220,7 +232,7 @@
             top: 30px;
             bottom: 0;
             width: 4px;
-            background: var(--dark-text); /* Black line */
+            background: var(--dark-text);
             transform: translateX(-50%);
         }
 
@@ -245,7 +257,7 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             width: 90%;
             position: relative;
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
         }
 
         .timeline-content::after {
@@ -255,7 +267,7 @@
             right: -10px;
             width: 0;
             height: 0;
-            border-left: 10px solid var(--dark-text); /* Black arrow */
+            border-left: 10px solid var(--dark-text);
             border-top: 10px solid transparent;
             border-bottom: 10px solid transparent;
         }
@@ -264,12 +276,12 @@
             right: auto;
             left: -10px;
             border-left: none;
-            border-right: 10px solid var(--dark-text); /* Black arrow */
+            border-right: 10px solid var(--dark-text);
         }
 
         .timeline-content h3 {
             margin-bottom: 0.5rem;
-            color: var(--jester-purple);
+            color: var(--dark-text);
             font-family: 'Cabin Sketch', cursive;
         }
 
@@ -280,7 +292,7 @@
             width: 20px;
             height: 20px;
             background: var(--parchment);
-            border: 3px solid var(--dark-text); /* Black border */
+            border: 3px solid var(--dark-text);
             border-radius: 50%;
             transform: translateX(-50%);
             z-index: 1;
@@ -293,7 +305,7 @@
             background: var(--parchment);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
         }
 
         .jester-selector {
@@ -308,7 +320,7 @@
             padding: 1rem 2rem;
             background: var(--parchment);
             color: var(--dark-text);
-            border: 2px solid var(--dark-text); /* Black border */
+            border: 2px solid var(--dark-text);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -317,7 +329,7 @@
         }
 
         .jester-option:hover {
-            background: var(--jester-green);
+            background: #e8e0d5;
             transform: scale(1.05);
         }
 
@@ -339,9 +351,17 @@
         }
 
         .jester-image {
-            font-size: 4rem;
             margin-bottom: 1rem;
-            color: var(--dark-text); /* Black color for emoji */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jester-image img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--dark-text);
+            border-radius: 10px;
         }
 
         footer {
@@ -351,7 +371,25 @@
             color: var(--dark-text);
             margin-top: 3rem;
             font-family: 'Cabin Sketch', cursive;
-            border-top: 3px solid var(--dark-text); /* Black border */
+            border-top: 3px solid var(--dark-text);
+        }
+
+        /* Audio control button */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--parchment);
+            border: 2px solid var(--dark-text);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 24px;
         }
 
         @media (max-width: 768px) {
@@ -374,7 +412,7 @@
                 right: auto;
                 left: -10px;
                 border-left: none;
-                border-right: 10px solid var(--dark-text); /* Black arrow */
+                border-right: 10px solid var(--dark-text);
             }
             
             .timeline-marker {
@@ -397,14 +435,25 @@
             .jester-option {
                 width: 80%;
             }
+            
+            .logo {
+                height: 300px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Hidden audio element -->
+    <audio id="backgroundAudio" loop>
+        <source src="Misanthrop.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Audio control button -->
+    <div class="audio-control" id="audioControl">🔊</div>
+    
     <header>
-        <h1>
-            Life Of A Dev: The Modern Day Jester
-        </h1>
+        <h1>Life Of A Dev: The Modern Day Jester</h1>
         <img class="logo" src="img/jester-dev.png" alt="logo">
         <p class="subtitle">CA: ajdfshvuvefwfwonvpump</p>
     </header>
@@ -412,7 +461,7 @@
     <div class="container">
         <section class="intro">
             <p>In the grand courts of nobility, jesters entertained lords and kings for coins and temporary favor. Today, in the digital kingdoms of cryptocurrency, meme coin developers perform a strikingly similar role - creating amusement for crypto "whales" in exchange for fleeting fortunes.</p>
-            <p>This website explores the uncanny parallels between these two seemingly disparate professions separated by centuries.</p>
+            <p>Let's explore the uncanny parallels between these two seemingly disparate professions separated by centuries.</p>
         </section>
         
         <section class="comparison-grid">
@@ -507,7 +556,7 @@
             
             <div class="jester-display">
                 <div class="jester-image">
-                    <img class="logo" src="img/jesters.png" alt="logo" width="500" height="500">
+                    <img src="img/jesters.png" alt="Jesters" width="500" height="500">
                 </div>
                 <p class="jester-quote">Select a jester type to see their modern equivalent</p>
                 <p class="jester-description"></p>
@@ -516,7 +565,7 @@
     </div>
     
     <footer>
-        <button onclick="document.location='https://pump.fun/board'" id="buyCoinBtn" class="throw-coins-btn">Throw coins at this jester</button>
+        <button onclick="window.open('https://pump.fun/board', '_blank')" id="buyCoinBtn" class="throw-coins-btn">Throw coins at this jester</button>
         <p>The Modern Day Jester - A comparison of two eras of entertainers</p>
         <p>© 2023 - All jesters and devs welcome</p>
     </footer>
@@ -528,41 +577,52 @@
             const jesterQuote = document.querySelector('.jester-quote');
             const jesterDescription = document.querySelector('.jester-description');
             const buyCoinBtn = document.getElementById('buyCoinBtn');
+            const audio = document.getElementById('backgroundAudio');
+            const audioControl = document.getElementById('audioControl');
             
+            // Jester data with image paths
             const jesterData = {
                 fool: {
-                    emoji: "🃏",
+                    image: 'img/the court fool.png',
                     quote: "I speak truths through laughter",
                     description: "The Court Fool used wit to critique nobility without punishment. Their modern equivalent is the meme coin dev who creates tokens that parody serious financial systems while making pointed commentary about crypto culture."
                 },
                 jongleur: {
-                    emoji: "🎪",
+                    image: 'img/the jongleur.png',
                     quote: "My act travels from court to court",
                     description: "Jongleurs were traveling entertainers who performed wherever they could find an audience. Similarly, some devs create multiple meme coins, hopping from trend to trend wherever they can attract investors."
                 },
                 buffoon: {
-                    emoji: "😂",
+                    image: 'img/the buffoon.png',
                     quote: "Laughter is my only currency",
                     description: "Buffoons relied on physical comedy and absurdity. Their crypto counterparts create the most outrageous meme coins with absurd premises that gain popularity precisely because of their ridiculousness."
                 },
                 zany: {
-                    emoji: "🎭",
+                    image: 'img/the zany.png',
                     quote: "I mimic the powerful for your amusement",
                     description: "Zanies specialized in imitation and mockery of the upper class. Modern equivalents create parody tokens that mimic serious projects or make fun of prominent figures in the crypto space."
                 }
             };
             
+            // Handle jester option clicks
             jesterOptions.forEach(option => {
                 option.addEventListener('click', function() {
                     const type = this.getAttribute('data-type');
                     const data = jesterData[type];
                     
-                    jesterImage.textContent = data.emoji;
+                    // Use image if available, otherwise fallback to emoji
+                    if (data.image) {
+                        jesterImage.innerHTML = `<img src="${data.image}" alt="${type} jester" style="max-width: 300px; max-height: 300px; border: 2px solid #000;">`;
+                    } else {
+                        jesterImage.innerHTML = data.emoji;
+                    }
+                    
                     jesterQuote.textContent = data.quote;
                     jesterDescription.textContent = data.description;
                 });
             });
             
+            // Handle coin throwing animation
             buyCoinBtn.addEventListener('click', function() {
                 // Create a fun animation for throwing coins
                 const btn = this;
@@ -581,6 +641,47 @@
                 }, 2000);
             });
             
+            // Audio control functionality
+            let isAudioPlaying = false;
+            
+            audioControl.addEventListener('click', function() {
+                if (isAudioPlaying) {
+                    audio.pause();
+                    audioControl.textContent = "🔇";
+                } else {
+                    audio.play().then(() => {
+                        audioControl.textContent = "🔊";
+                    }).catch(error => {
+                        console.log("Audio play failed:", error);
+                        alert("Please interact with the page first to play audio");
+                    });
+                }
+                isAudioPlaying = !isAudioPlaying;
+            });
+            
+            // Start audio on first user interaction (to comply with browser autoplay policies)
+            function startAudioOnInteraction() {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    audioControl.textContent = "🔊";
+                }).catch(error => {
+                    console.log("Autoplay blocked, waiting for user interaction");
+                });
+                
+                // Remove this event listener after first interaction
+                document.removeEventListener('click', startAudioOnInteraction);
+            }
+            
+            // Try to start audio on page load, but wait for interaction if blocked
+            audio.play().then(() => {
+                isAudioPlaying = true;
+                audioControl.textContent = "🔊";
+            }).catch(error => {
+                console.log("Autoplay blocked, waiting for user interaction");
+                document.addEventListener('click', startAudioOnInteraction);
+            });
+            
+            // Coin animation function
             function createFlyingCoin(button) {
                 const coin = document.createElement('div');
                 coin.innerHTML = '🪙';
@@ -619,7 +720,9 @@
                 
                 // Remove coin after animation
                 setTimeout(() => {
-                    document.body.removeChild(coin);
+                    if (coin.parentNode) {
+                        document.body.removeChild(coin);
+                    }
                 }, duration);
             }
         });
