@@ -516,7 +516,7 @@
     </div>
     
     <footer>
-        <button id="buyCoinBtn" class="throw-coins-btn">Throw coins at this jester</button>
+        <button href="https://pump.fun/board" id="buyCoinBtn" class="throw-coins-btn">Throw coins at this jester</button>
         <p>The Modern Day Jester - A comparison of two eras of entertainers</p>
         <p>© 2023 - All jesters and devs welcome</p>
     </footer>
@@ -528,7 +528,7 @@
         const jesterQuote = document.querySelector('.jester-quote');
         const jesterDescription = document.querySelector('.jester-description');
         const buyCoinBtn = document.getElementById('buyCoinBtn');
-        
+
         const jesterData = {
             fool: {
                 image: 'img/the court fool.png',
@@ -551,37 +551,40 @@
                 description: "Zanies specialized in imitation and mockery of the upper class. Modern equivalents create parody tokens that mimic serious projects or make fun of prominent figures in the crypto space."
             }
         };
-        
+
         jesterOptions.forEach(option => {
             option.addEventListener('click', function() {
                 const type = this.getAttribute('data-type');
                 const data = jesterData[type];
-                
-                // Replace emoji with image
+
                 jesterImage.innerHTML = `<img src="${data.image}" alt="${type} jester" style="max-width: 500px; max-height: 500px; border: 2px solid #000;">`;
                 jesterQuote.textContent = data.quote;
                 jesterDescription.textContent = data.description;
             });
         });
-        
-        buyCoinBtn.addEventListener('click', function() {
+
+        buyCoinBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            
             // Create a fun animation for throwing coins
             const btn = this;
             const originalText = btn.textContent;
             btn.textContent = "💰 Coins thrown! 💰";
             btn.classList.add('coins-thrown');
-            
+
             // Create coin animation
             for (let i = 0; i < 10; i++) {
                 createFlyingCoin(btn);
             }
-            
+
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.classList.remove('coins-thrown');
-            }, 2000);
+                // Navigate to the link after the animation finishes
+                window.location.href = this.href;
+            }, 1500); // Wait for the animation before redirecting
         });
-        
+
         function createFlyingCoin(button) {
             const coin = document.createElement('div');
             coin.innerHTML = '🪙';
@@ -589,27 +592,24 @@
             coin.style.fontSize = '24px';
             coin.style.zIndex = '1000';
             coin.style.pointerEvents = 'none';
-            coin.style.color = '#000000'; // Black coins
-            
-            // Position at the button
+            coin.style.color = '#000000';
+
             const rect = button.getBoundingClientRect();
             const startX = rect.left + rect.width / 2;
             const startY = rect.top + rect.height / 2;
-            
+
             coin.style.left = startX + 'px';
             coin.style.top = startY + 'px';
-            
+
             document.body.appendChild(coin);
-            
-            // Random direction and distance
+
             const angle = Math.random() * Math.PI * 2;
             const distance = 100 + Math.random() * 150;
             const endX = startX + Math.cos(angle) * distance;
             const endY = startY + Math.sin(angle) * distance;
-            
-            // Animate
+
             const duration = 800 + Math.random() * 700;
-            
+
             coin.animate([
                 { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
                 { transform: `translate(${endX - startX}px, ${endY - startY}px) rotate(360deg)`, opacity: 0 }
@@ -617,8 +617,7 @@
                 duration: duration,
                 easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
             });
-            
-            // Remove coin after animation
+
             setTimeout(() => {
                 document.body.removeChild(coin);
             }, duration);
